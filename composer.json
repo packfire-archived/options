@@ -1,0 +1,34 @@
+{
+    "name": "packfire/options",
+    "description": "Better CLI argument processing in PHP",
+    "version": "1.0.0",
+    "homepage": "http://mauris.sg/packfire/",
+    "type": "library",
+    "keywords": [
+      "cli",
+      "argument",
+      "processing",
+      "closure",
+      "callback"
+    ],
+    "authors":[
+        {
+            "name": "Sam-Mauris Yong",
+            "email": "mauris@hotmail.sg",
+            "homepage": "http://mauris.sg/",
+            "role": "Developer"
+        }
+    ],
+    "license": "BSD-3-Clause",
+    "support":{
+        "issues": "https://github.com/packfire/options/issues",
+        "wiki": "https://github.com/packfire/options/wiki",
+        "source": "https://github.com/packfire/options"
+    },
+    "require":{
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "psr-0": {"Packfire\\Command": "src/Packfire"}
+    }
+}
