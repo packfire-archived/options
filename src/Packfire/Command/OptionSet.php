@@ -10,21 +10,21 @@ namespace Packfire\Command;
  * @copyright Copyright (c) 2010-2012, Sam-Mauris Yong
  * @license http://www.opensource.org/licenses/bsd-license New BSD License
  * @package Packfire\Command
- * @since 2.0.0
+ * @since 1.0.0
  */
 class OptionSet implements IOption {
     
     /**
      * The collection of options
      * @var array
-     * @since 2.0.0
+     * @since 1.0.0
      */
     private $options = array();
     
     /**
      * Collection of index-based options
      * @var array
-     * @since 2.0.0
+     * @since 1.0.0
      */
     private $indexOptions = array();
     
@@ -33,7 +33,7 @@ class OptionSet implements IOption {
      * @param string $name Name of the option
      * @param Closure|callback $callback The callback to handle values for the option
      * @param string $help (optional) The help text for the option
-     * @since 2.0.0
+     * @since 1.0.0
      */
     public function add($name, $callback, $help = null){
         $this->options[] = new Option($name, $callback, $help);
@@ -44,7 +44,7 @@ class OptionSet implements IOption {
      * @param integer $index The index of the 
      * @param Closure|callback $callback The callback to handle values for the option
      * @param string $help (optional) The help text for the option
-     * @since 2.0.0
+     * @since 1.0.0
      */
     public function addIndex($index, $callback, $help = null){
         $this->indexOptions[] = new Option($index, $callback, $help);
@@ -53,7 +53,7 @@ class OptionSet implements IOption {
     /**
      * Parse the arguments
      * @param array|\Packfire\Collection\ArrayList $args The array of arguments to parse
-     * @since 2.0.0
+     * @since 1.0.0
      */
     public function parse($args){
         foreach($this->indexOptions as $option){
