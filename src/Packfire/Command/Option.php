@@ -69,7 +69,7 @@ class Option implements IOption {
         $this->name = $name;
         $this->isRequired = substr($name, 0, 1) == '!';
         if($this->isRequired){
-            $name = substr($name, 0, strlen($name) - 1);
+            $name = substr($name, 1, strlen($name) - 1);
         }
         $this->hasValue = substr($name, -1) == '=';
         if($this->hasValue){
