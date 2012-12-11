@@ -56,10 +56,15 @@ class OptionSet implements IOption {
      * @since 1.0.0
      */
     public function parse($args){
+        $argLength = count($args);
         foreach($this->indexOptions as $option){
             /* @var $option Packfire\Command\Option */
-            if(isset($args[$option->name()])){
-                $value = $args[$option->name()];
+            $index = $option->name();
+            if($index < 0){ // if index is negative, then we take from the back
+                $index = $argLength + $index;
+            }
+            if(isset($args[$index])){
+                $value = $args[$index];
                 $option->parse($value);
             }
         }
