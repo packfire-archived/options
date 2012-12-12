@@ -59,7 +59,7 @@ class OptionSet implements IOption {
         $argLength = count($args);
         foreach($this->indexOptions as $option){
             /* @var $option Packfire\Command\Option */
-            $index = $option->name();
+            $index = $option->index();
             if($index < 0){ // if index is negative, then we take from the back
                 $index = $argLength + $index;
             }

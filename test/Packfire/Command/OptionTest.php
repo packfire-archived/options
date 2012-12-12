@@ -36,10 +36,17 @@ class OptionTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers Packfire\Command\Option::name
+     * @covers Packfire\Command\Option::index
      */
-    public function testName() {
-        $this->assertEquals('!test|t=', $this->object->name());
+    public function testIndex() {
+        $this->assertEquals('!test|t=', $this->object->index());
+    }
+    
+    /**
+     * @covers Packfire\Command\Option::names
+     */
+    public function testNames() {
+        $this->assertEquals(array('test', 't'), $this->object->names());
     }
 
     /**
