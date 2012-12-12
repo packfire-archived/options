@@ -110,4 +110,23 @@ class OptionSet implements IOption {
         }
     }
     
+    /**
+     * Build the help text for the option set
+     * @return string Returns the string containing compiled help text
+     * @since 1.0.1
+     */
+    public function help(){
+        $buffer = '';
+        foreach($this->options as $option){
+            /* @var $option \Packfire\Command\Option */
+            foreach($option->names() as $name){
+                $buffer .= '  ' . (strlen($name) == 1 ? '-' : '--') 
+                    . $name . ($option->hasValue() ? '=[value]' : '') . "\n";
+            }
+            $buffer .= '    ' . ($option->required() ? '(required) ' : '')
+                .  $option->help() . "\n";
+        }
+        return $buffer;
+    }
+    
 }
