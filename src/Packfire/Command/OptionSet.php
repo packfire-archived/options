@@ -1,4 +1,13 @@
 <?php
+/**
+ * Packfire Options
+ * By Sam-Mauris Yong
+ * 
+ * Released open source under New BSD 3-Clause License.
+ * Copyright (c) 2012, Sam-Mauris Yong Shan Xian <sam@mauris.sg>
+ * All rights reserved.
+ */
+
 namespace Packfire\Command;
 
 /**
@@ -56,10 +65,15 @@ class OptionSet implements IOption {
      * @since 1.0.0
      */
     public function parse($args){
+        $argLength = count($args);
         foreach($this->indexOptions as $option){
             /* @var $option Packfire\Command\Option */
-            if(isset($args[$option->name()])){
-                $value = $args[$option->name()];
+            $index = $option->index();
+            if($index < 0){ // if index is negative, then we take from the back
+                $index = $argLength + $index;
+            }
+            if(isset($args[$index])){
+                $value = $args[$index];
                 $option->parse($value);
             }
         }
@@ -103,6 +117,25 @@ class OptionSet implements IOption {
             }
             $iterator->next();
         }
+    }
+    
+    /**
+     * Build the help text for the option set
+     * @return string Returns the string containing compiled help text
+     * @since 1.0.1
+     */
+    public function help(){
+        $buffer = '';
+        foreach($this->options as $option){
+            /* @var $option \Packfire\Command\Option */
+            foreach($option->names() as $name){
+                $buffer .= '  ' . (strlen($name) == 1 ? '-' : '--') 
+                    . $name . ($option->hasValue() ? '=[value]' : '') . "\n";
+            }
+            $buffer .= '    ' . ($option->required() ? '(required) ' : '')
+                .  $option->help() . "\n";
+        }
+        return $buffer;
     }
     
 }
