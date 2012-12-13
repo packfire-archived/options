@@ -82,5 +82,12 @@ class OptionSetTest extends \PHPUnit_Framework_TestCase {
         $this->assertFalse($linker);
         $this->assertEquals('test.log', $file);
     }
+    
+    public function testHelp(){
+        $this->object->add('q|quiet', null, 'Set the tool to be quiet');
+        $this->object->add('l|link=', null, 'Provide the linking binary path');
+        $help = "  -q\n  --quiet\n    Set the tool to be quiet\n  -l=[value]\n  --link=[value]\n    Provide the linking binary path\n";
+        $this->assertEquals($help, $this->object->help());
+    }
 
 }
