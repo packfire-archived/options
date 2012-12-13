@@ -1,4 +1,13 @@
 <?php
+/**
+ * Packfire Options
+ * By Sam-Mauris Yong
+ * 
+ * Released open source under New BSD 3-Clause License.
+ * Copyright (c) 2012, Sam-Mauris Yong Shan Xian <sam@mauris.sg>
+ * All rights reserved.
+ */
+
 namespace Packfire\Command;
 
 /**
@@ -19,7 +28,7 @@ class Option implements IOption {
      * @var string
      * @since 1.0.0
      */
-    private $name;
+    private $index;
     
     /**
      * An array containing the compiled names
@@ -58,24 +67,23 @@ class Option implements IOption {
     
     /**
      * Create a new Option object
-     * @param string $name The option names. Multiple names can be entered
+     * @param string $index The option names. Multiple names can be entered
      *              separated by a vertical bar '|'. If the option require a
      *              value
      * @param string $callback The callback to handle values retrieved
      * @param string $help (optional) The help text
      * @since 1.0.0
      */
-    public function __construct($name, $callback, $help = null){
-        $this->name = $name;
-        $this->isRequired = substr($name, 0, 1) == '!';
-        if($this->isRequired){
-            $name = substr($name, 0, strlen($name) - 1);
+    public function __construct($index, $callback, $help = null){
+        $this->index = $index;
+        if($this->isRequired = (substr($index, 0, 1) == '!')){
+            $index = substr($index, 1);
         }
-        $this->hasValue = substr($name, -1) == '=';
+        $this->hasValue = substr($index, -1) == '=';
         if($this->hasValue){
-            $name = substr($name, 0, strlen($name) - 1);
+            $index = substr($index, 0, strlen($index) - 1);
         }
-        $this->names = explode('|', $name);
+        $this->names = explode('|', $index);
         $this->callback = $callback;
         $this->help = $help;
     }
@@ -83,10 +91,19 @@ class Option implements IOption {
     /**
      * Get the original name of the options
      * @return string Returns the original name
-     * @since 1.0.0
+     * @since 1.0.1
      */
-    public function name(){
-        return $this->name;
+    public function index(){
+        return $this->index;
+    }
+    
+    /**
+     * Get the possible names of the option
+     * @return array Returns an array of possible names
+     * @since 1.0.1
+     */
+    public function names(){
+        return $this->names;
     }
     
     /**
