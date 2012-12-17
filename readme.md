@@ -12,7 +12,7 @@ Options helps you to parse CLI arguments using callbacks and Closures (in PHP 5.
 
 To install Packfire Options, add the entry to your `composer.json` "require" section:
 
-    "packfire/options": "1.0.*"
+    "packfire/options": "1.1.*"
 
 
 ##Usage
