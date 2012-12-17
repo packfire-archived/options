@@ -17,7 +17,7 @@ To install Packfire Options, add the entry to your `composer.json` "require" sec
 
 ##Usage
 
-	use Packfire\Command\OptionSet;
+	use Packfire\Options\OptionSet;
 
     $command = null;
     $quiet = false;
