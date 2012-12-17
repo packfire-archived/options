@@ -8,7 +8,7 @@
  * All rights reserved.
  */
 
-namespace Packfire\Command;
+namespace Packfire\Options;
 
 /**
  * OptionSet class
@@ -18,7 +18,7 @@ namespace Packfire\Command;
  * @author Sam-Mauris Yong / mauris@hotmail.sg
  * @copyright Copyright (c) 2010-2012, Sam-Mauris Yong
  * @license http://www.opensource.org/licenses/bsd-license New BSD License
- * @package Packfire\Command
+ * @package Packfire\Options
  * @since 1.0.0
  */
 class OptionSet implements IOption {
@@ -103,7 +103,7 @@ class OptionSet implements IOption {
                         $key = substr($key, 0, $kvPos);
                     }
                     foreach($this->options as $option){
-                        /* @var $option Packfire\Command\Option */
+                        /* @var $option \Packfire\Options\Option */
                         if($option->matchName($key)){
                             if(!$valuelessOption && $value === null && $option->hasValue()){
                                 $iterator->next();
@@ -127,7 +127,7 @@ class OptionSet implements IOption {
     public function help(){
         $buffer = '';
         foreach($this->options as $option){
-            /* @var $option \Packfire\Command\Option */
+            /* @var $option \Packfire\Options\Option */
             foreach($option->names() as $name){
                 $buffer .= '  ' . (strlen($name) == 1 ? '-' : '--') 
                     . $name . ($option->hasValue() ? '=[value]' : '') . "\n";

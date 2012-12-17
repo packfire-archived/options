@@ -8,7 +8,7 @@
  * All rights reserved.
  */
 
-namespace Packfire\Command;
+namespace Packfire\Options;
 
 /**
  * Test class for OptionSet.
@@ -38,7 +38,7 @@ class OptionSetTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers Packfire\Command\OptionSet::parse=
+     * @covers Packfire\Options\OptionSet::parse=
      */
     public function testParse() {
         $username = null;
@@ -59,7 +59,7 @@ class OptionSetTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers Packfire\Command\OptionSet::parse
+     * @covers Packfire\Options\OptionSet::parse
      */
     public function testParse2() {
         $command = null;
