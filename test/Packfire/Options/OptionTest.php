@@ -8,7 +8,7 @@
  * All rights reserved.
  */
 
-namespace Packfire\Command;
+namespace Packfire\Options;
 
 /**
  * Test class for Option.
@@ -44,21 +44,21 @@ class OptionTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers Packfire\Command\Option::index
+     * @covers Packfire\Options\Option::index
      */
     public function testIndex() {
         $this->assertEquals('!test|t=', $this->object->index());
     }
     
     /**
-     * @covers Packfire\Command\Option::names
+     * @covers Packfire\Options\Option::names
      */
     public function testNames() {
         $this->assertEquals(array('test', 't'), $this->object->names());
     }
 
     /**
-     * @covers Packfire\Command\OptionSet::required
+     * @covers Packfire\Options\OptionSet::required
      */
     public function testRequired() {
         $this->assertTrue($this->object->required());

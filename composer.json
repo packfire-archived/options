@@ -1,7 +1,7 @@
 {
     "name": "packfire/options",
     "description": "Better CLI argument processing in PHP",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "homepage": "http://mauris.sg/packfire/",
     "type": "library",
     "keywords": [

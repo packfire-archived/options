@@ -8,7 +8,7 @@
  * All rights reserved.
  */
 
-namespace Packfire\Command;
+namespace Packfire\Options;
 
 /**
  * Option class
@@ -18,7 +18,7 @@ namespace Packfire\Command;
  * @author Sam-Mauris Yong / mauris@hotmail.sg
  * @copyright Copyright (c) 2010-2012, Sam-Mauris Yong
  * @license http://www.opensource.org/licenses/bsd-license New BSD License
- * @package Packfire\Command
+ * @package Packfire\Options
  * @since 1.0.0
  */
 class Option implements IOption {
