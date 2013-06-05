@@ -160,4 +160,28 @@ class Option implements IOption
     {
         call_user_func($this->callback, $value);
     }
+
+    /**
+     * Format the names of the option neatly.
+     * @param boolean $linear (optional) Set whether the option names will be
+     *       displayed linear or not. Defaults to true.
+     * @return string Returns the name formatted neatly.
+     */
+    public function formatName($linear = true)
+    {
+        $buffer = '';
+        if ($linear) {
+            foreach ($this->names as $name) {
+                $buffer .=  (strlen($name) == 1 ? '-' : '--')
+                    . $name . ($this->hasValue ? '=[value]' : '') . ' ';
+            }
+            $buffer = trim($buffer);
+        } else {
+            foreach ($this->names as $name) {
+                $buffer .= (strlen($name) == 1 ? '-' : '--')
+                    . $name . ($this->hasValue ? '=[value]' : '') . "\n";
+            }
+        }
+        return $buffer;
+    }
 }
