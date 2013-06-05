@@ -11,9 +11,9 @@
 namespace Packfire\Options;
 
 /**
- * IOption interface
+ * IOptionSet interface
  *
- * An option abstraction
+ * An set of options abstraction
  *
  * @author Sam-Mauris Yong / mauris@hotmail.sg
  * @copyright Copyright (c) 2010-2012, Sam-Mauris Yong
@@ -21,7 +21,7 @@ namespace Packfire\Options;
  * @package Packfire\Options
  * @since 1.0.0
  */
-interface IOption
+interface IOptionSet
 {
     
     public function parse($value);

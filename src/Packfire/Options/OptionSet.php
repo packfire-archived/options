@@ -21,7 +21,7 @@ namespace Packfire\Options;
  * @package Packfire\Options
  * @since 1.0.0
  */
-class OptionSet implements IOption
+class OptionSet implements IOptionSet
 {
     
     /**
