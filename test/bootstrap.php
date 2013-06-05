@@ -8,4 +8,5 @@
  * All rights reserved.
  */
 
-require('vendor/autoload.php');
+$loader = require('vendor/autoload.php');
+$loader->add('Packfire\\Options\\', __DIR__);

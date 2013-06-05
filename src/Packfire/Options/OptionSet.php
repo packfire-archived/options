@@ -21,7 +21,8 @@ namespace Packfire\Options;
  * @package Packfire\Options
  * @since 1.0.0
  */
-class OptionSet implements IOption {
+class OptionSet implements IOption
+{
     
     /**
      * The collection of options
@@ -44,7 +45,8 @@ class OptionSet implements IOption {
      * @param string $help (optional) The help text for the option
      * @since 1.0.0
      */
-    public function add($name, $callback, $help = null){
+    public function add($name, $callback, $help = null)
+    {
         $this->options[] = new Option($name, $callback, $help);
     }
     
@@ -55,7 +57,8 @@ class OptionSet implements IOption {
      * @param string $help (optional) The help text for the option
      * @since 1.0.0
      */
-    public function addIndex($index, $callback, $help = null){
+    public function addIndex($index, $callback, $help = null)
+    {
         $this->indexOptions[] = new Option($index, $callback, $help);
     }
     
@@ -64,48 +67,49 @@ class OptionSet implements IOption {
      * @param array|\Packfire\Collection\ArrayList $args The array of arguments to parse
      * @since 1.0.0
      */
-    public function parse($args){
+    public function parse($args)
+    {
         $argLength = count($args);
-        foreach($this->indexOptions as $option){
+        foreach ($this->indexOptions as $option) {
             /* @var $option Packfire\Command\Option */
             $index = $option->index();
-            if($index < 0){ // if index is negative, then we take from the back
+            if ($index < 0) { // if index is negative, then we take from the back
                 $index = $argLength + $index;
             }
-            if(isset($args[$index])){
+            if (isset($args[$index])) {
                 $value = $args[$index];
                 $option->parse($value);
             }
         }
         $iterator = new \ArrayIterator($args);
-        while($iterator->valid()){
+        while ($iterator->valid()) {
             $argValue = $iterator->current();
             $key = null;
             $valuelessOption = false;
             $firstChar = substr($argValue, 0, 1);
-            if($firstChar == '/' || $firstChar == '-'){
-                if(substr($argValue, 0, 2) == '--'){
+            if ($firstChar == '/' || $firstChar == '-') {
+                if (substr($argValue, 0, 2) == '--') {
                     $key = substr($argValue, 2);
-                }else{
+                } else {
                     $key = substr($argValue, 1);
-                    if($firstChar == '-' && strlen($key) > 1){
+                    if ($firstChar == '-' && strlen($key) > 1) {
                         $valuelessOption = true;
                         $key = str_split($key);
                     }
                 }
             }
-            if($key){
+            if ($key) {
                 $keys = (array)$key;
-                foreach($keys as $key){
+                foreach ($keys as $key) {
                     $value = null;
-                    if(!$valuelessOption && false !== ($kvPos = strpos($key, '='))){
+                    if (!$valuelessOption && false !== ($kvPos = strpos($key, '='))) {
                         $value = substr($key, $kvPos + 1);
                         $key = substr($key, 0, $kvPos);
                     }
-                    foreach($this->options as $option){
+                    foreach ($this->options as $option) {
                         /* @var $option \Packfire\Options\Option */
-                        if($option->matchName($key)){
-                            if(!$valuelessOption && $value === null && $option->hasValue()){
+                        if ($option->matchName($key)) {
+                            if (!$valuelessOption && $value === null && $option->hasValue()) {
                                 $iterator->next();
                                 $value = $iterator->current();
                             }
@@ -124,12 +128,13 @@ class OptionSet implements IOption {
      * @return string Returns the string containing compiled help text
      * @since 1.0.1
      */
-    public function help(){
+    public function help()
+    {
         $buffer = '';
-        foreach($this->options as $option){
+        foreach ($this->options as $option) {
             /* @var $option \Packfire\Options\Option */
-            foreach($option->names() as $name){
-                $buffer .= '  ' . (strlen($name) == 1 ? '-' : '--') 
+            foreach ($option->names() as $name) {
+                $buffer .= '  ' . (strlen($name) == 1 ? '-' : '--')
                     . $name . ($option->hasValue() ? '=[value]' : '') . "\n";
             }
             $buffer .= '    ' . ($option->required() ? '(required) ' : '')
@@ -137,5 +142,4 @@ class OptionSet implements IOption {
         }
         return $buffer;
     }
-    
 }

@@ -21,8 +21,8 @@ namespace Packfire\Options;
  * @package Packfire\Options
  * @since 1.0.0
  */
-interface IOption {
+interface IOption
+{
     
     public function parse($value);
-    
 }

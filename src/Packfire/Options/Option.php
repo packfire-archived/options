@@ -21,7 +21,8 @@ namespace Packfire\Options;
  * @package Packfire\Options
  * @since 1.0.0
  */
-class Option implements IOption {
+class Option implements IOption
+{
     
     /**
      * The full name entered
@@ -74,13 +75,14 @@ class Option implements IOption {
      * @param string $help (optional) The help text
      * @since 1.0.0
      */
-    public function __construct($index, $callback, $help = null){
+    public function __construct($index, $callback, $help = null)
+    {
         $this->index = $index;
-        if($this->isRequired = (substr($index, 0, 1) == '!')){
+        if ($this->isRequired = (substr($index, 0, 1) == '!')) {
             $index = substr($index, 1);
         }
         $this->hasValue = substr($index, -1) == '=';
-        if($this->hasValue){
+        if ($this->hasValue) {
             $index = substr($index, 0, strlen($index) - 1);
         }
         $this->names = explode('|', $index);
@@ -93,7 +95,8 @@ class Option implements IOption {
      * @return string Returns the original name
      * @since 1.0.1
      */
-    public function index(){
+    public function index()
+    {
         return $this->index;
     }
     
@@ -102,7 +105,8 @@ class Option implements IOption {
      * @return array Returns an array of possible names
      * @since 1.0.1
      */
-    public function names(){
+    public function names()
+    {
         return $this->names;
     }
     
@@ -111,7 +115,8 @@ class Option implements IOption {
      * @return boolean Returns if the option is required
      * @since 1.0.0
      */
-    public function required(){
+    public function required()
+    {
         return $this->isRequired;
     }
     
@@ -120,7 +125,8 @@ class Option implements IOption {
      * @return boolean Returns if the option has a value
      * @since 1.0.0
      */
-    public function hasValue(){
+    public function hasValue()
+    {
         return $this->hasValue;
     }
     
@@ -130,7 +136,8 @@ class Option implements IOption {
      * @return boolean Returns true if the option name match, false otherwise.
      * @since 1.0.0
      */
-    public function matchName($name){
+    public function matchName($name)
+    {
         return in_array($name, $this->names);
     }
     
@@ -139,7 +146,8 @@ class Option implements IOption {
      * @return string Returns the help text
      * @since 1.0.0
      */
-    public function help(){
+    public function help()
+    {
         return $this->help;
     }
     
@@ -148,8 +156,8 @@ class Option implements IOption {
      * @param string $value The option value
      * @since 1.0.0
      */
-    public function parse($value){
+    public function parse($value)
+    {
         call_user_func($this->callback, $value);
     }
-    
 }
