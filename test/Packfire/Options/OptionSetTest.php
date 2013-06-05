@@ -38,7 +38,7 @@ class OptionSetTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers Packfire\Options\OptionSet::parse=
+     * @covers Packfire\Options\OptionSet::parse
      */
     public function testParse() {
         $username = null;

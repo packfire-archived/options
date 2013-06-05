@@ -58,12 +58,15 @@ class OptionTest extends \PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @covers Packfire\Options\OptionSet::required
+     * @covers Packfire\Options\Option::required
      */
     public function testRequired() {
         $this->assertTrue($this->object->required());
     }
 
+    /**
+     * @covers Packfire\Options\Option::hasValue
+     */
     public function testHasValue(){
         $this->assertTrue($this->object->hasValue());
     }
