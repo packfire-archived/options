@@ -21,7 +21,7 @@ namespace Packfire\Options;
  * @package Packfire\Options
  * @since 1.0.0
  */
-class Option implements IOption
+class Option
 {
     
     /**
@@ -152,11 +152,11 @@ class Option implements IOption
     }
     
     /**
-     * Parse the value by calling the calback with the value
+     * Call the option calback with the value
      * @param string $value The option value
      * @since 1.0.0
      */
-    public function parse($value)
+    public function execute($value)
     {
         call_user_func($this->callback, $value);
     }
@@ -167,7 +167,7 @@ class Option implements IOption
      *       displayed linear or not. Defaults to true.
      * @return string Returns the name formatted neatly.
      */
-    public function formatName($linear = true)
+    public function formatNames($linear = true)
     {
         $buffer = '';
         if ($linear) {

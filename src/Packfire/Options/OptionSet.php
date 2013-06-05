@@ -78,7 +78,7 @@ class OptionSet implements IOptionSet
             }
             if (isset($args[$index])) {
                 $value = $args[$index];
-                $option->parse($value);
+                $option->execute($value);
             }
         }
         $iterator = new \ArrayIterator($args);
@@ -113,7 +113,7 @@ class OptionSet implements IOptionSet
                                 $iterator->next();
                                 $value = $iterator->current();
                             }
-                            $option->parse($value);
+                            $option->execute($value);
                             break;
                         }
                     }

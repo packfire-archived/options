@@ -91,9 +91,14 @@ class OptionTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Some help text', $this->object->help());
     }
 
-    public function testParse()
+    public function testExecute()
     {
-        $this->object->parse(5);
+        $this->object->execute(5);
         $this->assertEquals(5, $this->check);
+    }
+
+    public function testFormatNamesLinear()
+    {
+        $this->assertEquals('--test=[value] -t=[value]', $this->object->formatNames());
     }
 }
