@@ -133,11 +133,8 @@ class OptionSet implements IOption
         $buffer = '';
         foreach ($this->options as $option) {
             /* @var $option \Packfire\Options\Option */
-            foreach ($option->names() as $name) {
-                $buffer .= '  ' . (strlen($name) == 1 ? '-' : '--')
-                    . $name . ($option->hasValue() ? '=[value]' : '') . "\n";
-            }
-            $buffer .= '    ' . ($option->required() ? '(required) ' : '')
+            $buffer .= $option->formatNames(false);
+            $buffer .= '  ' . ($option->required() ? '(required) ' : '')
                 .  $option->help() . "\n";
         }
         return $buffer;
